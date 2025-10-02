@@ -1,21 +1,10 @@
 @extends('dashboard.layouts')
 
+@section('title', 'Where Food Meets Freshness')
+
 @section('content')
     <!-- Statistik Cards -->
     <section class="stats-cards">
-        <div class="card">
-            <div class="card-icon">
-                <i class="fas fa-users"></i>
-            </div>
-            <div class="card-info">
-                <h3>Total Pengguna</h3>
-                <p class="card-value">12,458</p>
-                <p class="card-change positive">
-                    <i class="fas fa-arrow-up"></i>
-                    12.5%
-                </p>
-            </div>
-        </div>
         <div class="card">
             <div class="card-icon">
                 <i class="fas fa-shopping-cart"></i>

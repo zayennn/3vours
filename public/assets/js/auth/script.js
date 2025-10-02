@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         if (isValid) {
-            window.location.href = '/dashboard';
+            window.location.href = '/dashboard/home';
         }
     });
     

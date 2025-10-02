@@ -2,13 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\SalesController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::prefix('dashboard')->group(function () {
-    Route::get('/home', [DashboardController::class, 'home'])->name('dashboard.home');
-    Route::get('/products', [DashboardController::class, 'products'])->name('dashboard.products');
-    Route::get('/sales', [DashboardController::class, 'sales'])->name('dashboard.sales');
+    // home
+    Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.home');
+
+    // products
+    Route::get('/products', [ProductsController::class, 'index'])->name('dashboard.products');
+
+    // sales history
+    Route::get('/sales', [SalesController::class, 'index'])->name('dashboard.sales');
 });
