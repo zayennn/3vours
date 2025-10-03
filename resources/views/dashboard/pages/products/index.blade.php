@@ -3,40 +3,6 @@
 @section('title', 'Products')
 
 @section('content')
-    <!-- Header -->
-    <header class="header">
-        <div class="header-left">
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <h1>Product Management</h1>
-        </div>
-
-        <div class="header-right">
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchProducts" placeholder="Search products...">
-            </div>
-
-            <button class="btn btn-primary" id="addProductBtn">
-                <i class="fas fa-plus"></i>
-                Add Product
-            </button>
-
-            <div class="user-menu">
-                <div class="notification">
-                    <i class="fas fa-bell"></i>
-                    <span class="notification-badge">3</span>
-                </div>
-                <div class="user-profile">
-                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=764ba2&color=fff" alt="User">
-                    <span>Admin User</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-            </div>
-        </div>
-    </header>
-
     <!-- Stats Cards -->
     <section class="stats-section">
         <div class="stats-grid">

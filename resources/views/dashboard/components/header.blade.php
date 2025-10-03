@@ -17,6 +17,12 @@
             </div>
             <div class="user-avatar">
                 <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff" alt="Admin User">
+                <div class="dropdown">
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="logout-button">Keluar</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

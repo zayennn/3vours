@@ -150,3 +150,116 @@ document.querySelectorAll('.chart-filter').forEach(filter => {
         }
     });
 });
+
+
+
+
+// ======================= products =========================
+// Add this to your existing JavaScript file
+class StatsAnimator {
+    constructor() {
+        this.animated = false;
+    }
+
+    init() {
+        this.observeStatsSection();
+        this.setupHoverEffects();
+    }
+
+    observeStatsSection() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !this.animated) {
+                    this.animateCounters();
+                    this.animated = true;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+    }
+
+    animateCounters() {
+        const counters = document.querySelectorAll('.stat-info h3');
+        
+        counters.forEach(counter => {
+            const target = parseInt(counter.textContent);
+            const duration = 2000; // 2 seconds
+            const step = target / (duration / 16); // 60fps
+            let current = 0;
+            
+            counter.classList.add('animating');
+            
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    counter.textContent = this.formatNumber(target);
+                    clearInterval(timer);
+                    counter.classList.remove('animating');
+                } else {
+                    counter.textContent = this.formatNumber(Math.floor(current));
+                }
+            }, 16);
+        });
+    }
+
+    formatNumber(num) {
+        if (num >= 1000000) {
+            return (num / 1000000).toFixed(1) + 'M';
+        } else if (num >= 1000) {
+            return (num / 1000).toFixed(1) + 'K';
+        }
+        return num.toString();
+    }
+
+    setupHoverEffects() {
+        const statCards = document.querySelectorAll('.stat-card');
+        
+        statCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    }
+}
+
+// Initialize stats animator
+document.addEventListener('DOMContentLoaded', () => {
+    const statsAnimator = new StatsAnimator();
+    statsAnimator.init();
+});
+
+// Update stats function for your ProductManager class
+function updateStats() {
+    const totalProducts = this.products.length;
+    const activeProducts = this.products.filter(p => p.status === 'active').length;
+    const outOfStock = this.products.filter(p => p.stock === 0).length;
+    const categories = new Set(this.products.map(p => p.category)).size;
+    
+    // Update DOM elements
+    document.getElementById('totalProducts').textContent = totalProducts;
+    document.getElementById('activeProducts').textContent = activeProducts;
+    document.getElementById('outOfStock').textContent = outOfStock;
+    document.getElementById('totalCategories').textContent = categories;
+    
+    // Trigger animation if stats are visible
+    const statsSection = document.querySelector('.stats-section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                statsAnimator.animateCounters();
+            }
+        });
+    });
+    
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
+}

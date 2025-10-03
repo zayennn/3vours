@@ -20,12 +20,18 @@ class AuthController extends Controller
         // logger($request);
 
         if (Auth::attempt($data)) {
-            dd('Login berhasil!', $request->all());
-            // return redirect()->route('dashboard.home')->with('success', 'berhasil login');
+            // dd('Login berhasil!', $request->all());
+            return redirect()->route('dashboard.home')->with('success', 'berhasil login');
         }
 
-        // dd('login gagal');
+        dd('login gagal');
 
         return back()->withErrors('error', $data);
+    }
+
+
+    public function logout() {
+        Auth::logout();
+        return redirect()->route('index')->with('success', 'berhasil logout');
     }
 }
