@@ -51,6 +51,8 @@
         @endif
     </script>
     <script src="{{ asset('assets/js/dashboard/script.js') }}"></script>
+
+    @yield('scripts')
 </body>
 
 </html>

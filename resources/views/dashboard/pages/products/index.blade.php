@@ -86,9 +86,9 @@
                             <option value="outofstock">Out of Stock</option>
                         </select>
                     </div>
-                    <button class="btn btn-secondary" id="exportBtn">
-                        <i class="fas fa-download"></i>
-                        Export
+                    <button class="btn btn-secondary" id="addProduct">
+                        {{-- <i class="fas fa-download"></i> --}}
+                        Add Product
                     </button>
                 </div>
             </div>
@@ -131,119 +131,14 @@
             </div>
         </div>
     </section>
+@endsection
 
-    <!-- Product Modal -->
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modalTitle">Add New Product</h3>
-                <button class="modal-close" id="modalClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <form id="productForm" class="modal-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="productName">Product Name *</label>
-                        <input type="text" id="productName" name="productName" required>
-                        <span class="error-message" id="nameError"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="productSKU">SKU *</label>
-                        <input type="text" id="productSKU" name="productSKU" required>
-                        <span class="error-message" id="skuError"></span>
-                    </div>
-                </div>
+@section('scripts')
+    <script>
+        const addProduct = document.getElementById('addProduct')
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="productCategory">Category *</label>
-                        <select id="productCategory" name="productCategory" required>
-                            <option value="">Select Category</option>
-                            <option value="electronics">Electronics</option>
-                            <option value="clothing">Clothing</option>
-                            <option value="books">Books</option>
-                            <option value="home">Home & Garden</option>
-                        </select>
-                        <span class="error-message" id="categoryError"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="productPrice">Price ($) *</label>
-                        <input type="number" id="productPrice" name="productPrice" step="0.01" min="0"
-                            required>
-                        <span class="error-message" id="priceError"></span>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="productStock">Stock Quantity *</label>
-                        <input type="number" id="productStock" name="productStock" min="0" required>
-                        <span class="error-message" id="stockError"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="productStatus">Status</label>
-                        <select id="productStatus" name="productStatus">
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                            <option value="outofstock">Out of Stock</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="productDescription">Description</label>
-                    <textarea id="productDescription" name="productDescription" rows="4"
-                        placeholder="Enter product description..."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="productImage">Product Image</label>
-                    <div class="image-upload">
-                        <input type="file" id="productImage" name="productImage" accept="image/*"
-                            class="file-input">
-                        <div class="upload-area" id="uploadArea">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <p>Click to upload or drag and drop</p>
-                            <span>PNG, JPG, GIF up to 5MB</span>
-                        </div>
-                        <div class="image-preview" id="imagePreview" style="display: none;">
-                            <img id="previewImage" src="" alt="Preview">
-                            <button type="button" class="remove-image" id="removeImage">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
-                    <button type="submit" class="btn btn-primary" id="submitBtn">
-                        <i class="fas fa-plus"></i>
-                        Add Product
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Delete Confirmation Modal -->
-    <div id="deleteModal" class="modal">
-        <div class="modal-content modal-sm">
-            <div class="modal-header">
-                <h3>Confirm Delete</h3>
-                <button class="modal-close" id="deleteModalClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <i class="fas fa-exclamation-triangle warning-icon"></i>
-                <p>Are you sure you want to delete this product? This action cannot be undone.</p>
-            </div>
-            <div class="modal-actions">
-                <button class="btn btn-secondary" id="cancelDelete">Cancel</button>
-                <button class="btn btn-danger" id="confirmDelete">Delete</button>
-            </div>
-        </div>
-    </div>
+        addProduct.addEventListener('click', function() {
+            window.location.href = "{{ route('dashboard.products.create') }}";
+        })
+    </script>
 @endsection
