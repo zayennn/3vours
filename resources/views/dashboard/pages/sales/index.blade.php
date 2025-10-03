@@ -1,121 +1,124 @@
 @extends('dashboard.layouts')
 
-@section('title', 'Products')
+@section('title', 'Sales History')
 
 @section('content')
-    <div class="products-header">
-        <div class="products-stats">
-            <div class="stat-item">
-                <h3 id="totalProducts">0</h3>
-                <p>Total Products</p>
+    <section class="products-section">
+        <!-- Products Header -->
+        <div class="products-header">
+            <div class="products-stats">
+                <div class="stat-item">
+                    <h3 id="totalProducts">0</h3>
+                    <p>Total Products</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="activeProducts">0</h3>
+                    <p>Active Products</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="outOfStock">0</h3>
+                    <p>Out of Stock</p>
+                </div>
             </div>
-            <div class="stat-item">
-                <h3 id="activeProducts">0</h3>
-                <p>Active Products</p>
-            </div>
-            <div class="stat-item">
-                <h3 id="outOfStock">0</h3>
-                <p>Out of Stock</p>
-            </div>
-        </div>
 
-        <button class="btn btn-primary" id="addProductBtn">
-            <i class="fas fa-plus"></i>
-            Add New Product
-        </button>
-    </div>
-
-    <!-- Filters and Actions -->
-    <div class="products-filters">
-        <div class="filter-group">
-            <select id="categoryFilter" class="filter-select">
-                <option value="">All Categories</option>
-                <option value="electronics">Electronics</option>
-                <option value="clothing">Clothing</option>
-                <option value="books">Books</option>
-                <option value="home">Home & Garden</option>
-            </select>
-
-            <select id="statusFilter" class="filter-select">
-                <option value="">All Status</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-            </select>
-
-            <select id="stockFilter" class="filter-select">
-                <option value="">All Stock</option>
-                <option value="in-stock">In Stock</option>
-                <option value="out-of-stock">Out of Stock</option>
-            </select>
-        </div>
-
-        <div class="actions-group">
-            <button class="btn btn-secondary" id="exportBtn">
-                <i class="fas fa-download"></i>
-                Export
-            </button>
-            <button class="btn btn-secondary" id="refreshBtn">
-                <i class="fas fa-sync-alt"></i>
-                Refresh
-            </button>
-        </div>
-    </div>
-
-    <!-- Products Table -->
-    <div class="products-table-container">
-        <table class="products-table" id="productsTable">
-            <thead>
-                <tr>
-                    <th>
-                        <input type="checkbox" id="selectAll">
-                    </th>
-                    <th>Product</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th>Stock</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="productsTableBody">
-                <!-- Products will be loaded here dynamically -->
-            </tbody>
-        </table>
-
-        <!-- Loading State -->
-        <div class="loading-state" id="loadingState">
-            <i class="fas fa-spinner fa-spin"></i>
-            <p>Loading products...</p>
-        </div>
-
-        <!-- Empty State -->
-        <div class="empty-state" id="emptyState" style="display: none;">
-            <i class="fas fa-box-open"></i>
-            <h3>No products found</h3>
-            <p>There are no products matching your criteria.</p>
-            <button class="btn btn-primary" id="addFirstProductBtn">
+            <button class="btn btn-primary" id="addProductBtn">
                 <i class="fas fa-plus"></i>
-                Add Your First Product
+                Add New Product
             </button>
         </div>
-    </div>
 
-    <!-- Pagination -->
-    <div class="pagination" id="pagination">
-        <button class="pagination-btn" id="prevPage" disabled>
-            <i class="fas fa-chevron-left"></i>
-            Previous
-        </button>
+        <!-- Filters and Actions -->
+        <div class="products-filters">
+            <div class="filter-group">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">All Categories</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="books">Books</option>
+                    <option value="home">Home & Garden</option>
+                </select>
 
-        <div class="pagination-info">
-            Page <span id="currentPage">1</span> of <span id="totalPages">1</span>
+                <select id="statusFilter" class="filter-select">
+                    <option value="">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+
+                <select id="stockFilter" class="filter-select">
+                    <option value="">All Stock</option>
+                    <option value="in-stock">In Stock</option>
+                    <option value="out-of-stock">Out of Stock</option>
+                </select>
+            </div>
+
+            <div class="actions-group">
+                <button class="btn btn-secondary" id="exportBtn">
+                    <i class="fas fa-download"></i>
+                    Export
+                </button>
+                <button class="btn btn-secondary" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i>
+                    Refresh
+                </button>
+            </div>
         </div>
 
-        <button class="pagination-btn" id="nextPage" disabled>
-            Next
-            <i class="fas fa-chevron-right"></i>
-        </button>
-    </div>
+        <!-- Products Table -->
+        <div class="products-table-container">
+            <table class="products-table" id="productsTable">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" id="selectAll">
+                        </th>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productsTableBody">
+                    <!-- Products will be loaded here dynamically -->
+                </tbody>
+            </table>
+
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Loading products...</p>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <i class="fas fa-box-open"></i>
+                <h3>No products found</h3>
+                <p>There are no products matching your criteria.</p>
+                <button class="btn btn-primary" id="addFirstProductBtn">
+                    <i class="fas fa-plus"></i>
+                    Add Your First Product
+                </button>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <button class="pagination-btn" id="prevPage" disabled>
+                <i class="fas fa-chevron-left"></i>
+                Previous
+            </button>
+
+            <div class="pagination-info">
+                Page <span id="currentPage">1</span> of <span id="totalPages">1</span>
+            </div>
+
+            <button class="pagination-btn" id="nextPage" disabled>
+                Next
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
 
     <!-- Add/Edit Product Modal -->
     <div class="modal" id="productModal">

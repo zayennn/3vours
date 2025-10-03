@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const passwordError = document.getElementById('password-error');
     
     loginForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+        // e.preventDefault();
         
         resetErrors();
         
@@ -26,10 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (passwordInput.value.trim().length < 6) {
             showError(passwordError, 'Password must be at least 6 characters');
             isValid = false;
-        }
-        
-        if (isValid) {
-            window.location.href = '/dashboard/home';
         }
     });
     

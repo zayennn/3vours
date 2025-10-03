@@ -16,8 +16,8 @@
             </div>
             
             {{-- form input --}}
-            <form id="loginForm" class="login-form">
-
+            <form action="{{ route('index.login') }}" method="POST" id="loginForm" class="login-form">
+                @csrf
                 {{-- email --}}
                 <div class="form-group">
                     <label for="email">Email</label>
