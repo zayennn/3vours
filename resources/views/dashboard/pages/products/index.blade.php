@@ -2,6 +2,8 @@
 
 @section('title', 'Products')
 
+@section('header title', 'Products')
+
 @section('content')
     <!-- Stats Cards -->
     <section class="stats-section">
@@ -86,7 +88,7 @@
                             <option value="outofstock">Out of Stock</option>
                         </select>
                     </div>
-                    <button class="btn btn-secondary" id="addProduct">
+                    <button class="btn btn-primary" id="addProduct">
                         {{-- <i class="fas fa-download"></i> --}}
                         Add Product
                     </button>

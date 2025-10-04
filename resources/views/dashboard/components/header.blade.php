@@ -3,7 +3,7 @@
         <button class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
         </button>
-        <h1>Beranda</h1>
+        <h1>@yield('header title')</h1>
     </div>
     <div class="header-right">
         <div class="search-bar">

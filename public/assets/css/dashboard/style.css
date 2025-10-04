@@ -47,6 +47,7 @@ body {
 .logo {
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 1.5rem;
     border-bottom: 1px solid var(--gray-light);
     color: var(--primary);
@@ -884,18 +885,13 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #4f46e5, #10b981);
     color: white;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-}
-
-.btn-secondary {
-    background: var(--border-color);
-    color: var(--text-primary);
 }
 
 .btn-secondary:hover {

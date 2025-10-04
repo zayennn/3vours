@@ -1,6 +1,6 @@
 <aside class="sidebar">
     <div class="logo">
-        <img src="{{ asset('assets/images/logo.png') }}" width="180">
+        <img src="{{ asset('assets/images/logo.png') }}" width="100">
     </div>
     <nav class="sidebar-nav">
         <ul>
