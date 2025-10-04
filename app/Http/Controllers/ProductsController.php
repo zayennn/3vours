@@ -11,6 +11,6 @@ class ProductsController extends Controller
     }
 
     public function create() {
-        return view('dashboard.pages.products.craete');
+        return view('dashboard.pages.products.create');
     }
 }

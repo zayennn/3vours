@@ -263,3 +263,7 @@ function updateStats() {
         observer.observe(statsSection);
     }
 }
+
+
+
+// ======================= add products =========================
