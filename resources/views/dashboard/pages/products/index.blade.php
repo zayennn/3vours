@@ -76,10 +76,8 @@
                     <div class="filter-group">
                         <select id="categoryFilter" class="filter-select">
                             <option value="">All Categories</option>
-                            <option value="electronics">Electronics</option>
-                            <option value="clothing">Clothing</option>
-                            <option value="books">Books</option>
-                            <option value="home">Home & Garden</option>
+                            <option value="electronics">Drinks</option>
+                            <option value="clothing">Foods</option>
                         </select>
                         <select id="statusFilter" class="filter-select">
                             <option value="">All Status</option>
@@ -111,7 +109,32 @@
                         </tr>
                     </thead>
                     <tbody id="productsTableBody">
-                        <!-- Products will be populated by JavaScript -->
+                        @forelse ($products as $product)
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="product-info">
+                                        <img src="{{ asset('storage/' . $product->main_image) }}" alt="{{ $product->name }}"
+                                            width="40">
+                                        <span>{{ $product->name }}</span>
+                                    </div>
+                                </td>
+                                <td>{{ $product->category->name }}</td>
+                                <td>Rp {{ number_format($product->price, 0, ',', '.') }}</td>
+                                <td>{{ $product->stock }}</td>
+                                <td>
+                                    <span class="status {{ $product->status }}">{{ ucfirst($product->status) }}</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-warning">Edit</button>
+                                    <button class="btn btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7" class="text-center">No products found.</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

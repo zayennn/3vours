@@ -28,7 +28,8 @@
 
         <!-- Product Form -->
         <div class="form-container">
-            <form class="product-form" id="productForm">
+            <form class="product-form" id="productForm"  action="{{ route('dashboard.products.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="form-grid">
                     <!-- Basic Information -->
                     <div class="form-section">
@@ -126,7 +127,6 @@
                     </div>
                 </div>
 
-                <!-- Form Actions -->
                 <div class="form-actions">
                     <button type="button" class="btn btn-secondary" onclick="window.history.back()">
                         <i class="fas fa-times"></i>
@@ -140,4 +140,13 @@
             </form>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        document.getElementById('mainUploadArea').addEventListener('click', function() {
+            document.getElementById('main_image').click();
+        });
+    </script>
+
 @endsection

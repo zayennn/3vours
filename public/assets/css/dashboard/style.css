@@ -884,9 +884,19 @@ body {
     text-decoration: none;
 }
 
-.btn-primary {
+.btn.btn-primary {
     background: linear-gradient(135deg, #4f46e5, #10b981);
     color: white;
+}
+
+.btn-warinng {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24) !important;
+    color: white !important;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+    color: white !important;
 }
 
 .btn-primary:hover {
@@ -1921,6 +1931,12 @@ body {
     border: 2px solid var(--border-color);
 }
 
+.product-info {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+}
+
 .product-info h4 {
     font-weight: 500;
     margin-bottom: 4px;
@@ -2165,6 +2181,10 @@ body {
     display: flex;
     justify-content: flex-end;
     gap: 12px;
+}
+
+.text-center {
+    text-align: center;
 }
 
 /* Responsive Design */

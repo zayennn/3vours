@@ -49,6 +49,17 @@
                 showConfirmButton: false
             });
         @endif
+
+        @if ($errors->any())
+            let errorMessages = `{!! implode('<br>', $errors->all()) !!}`;
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Error',
+                html: errorMessages,
+                confirmButtonColor: '#d33',
+                confirmButtonText: 'OK'
+            });
+        @endif
     </script>
     <script src="{{ asset('assets/js/dashboard/script.js') }}"></script>
 
