@@ -23,6 +23,7 @@
 
             <!-- Dashboard Content -->
             <div class="dashboard-content">
+                @include('dashboard.components.bread-crumb')
                 @yield('content')
             </div>
         </main>

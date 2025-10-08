@@ -7,13 +7,13 @@
 @section('content')
     <div class="products-container">
         <!-- Page Header -->
-        <div class="page-header">
+        {{-- <div class="page-header">
             <div class="header-content">
                 <h1 class="page-title">Add New Product</h1>
                 <div class="breadcrumb">
-                    <a href="">Dashboard</a>
+                    <a href="{{ route('dashboard.home') }}">Dashboard</a>
                     <i class="fas fa-chevron-right"></i>
-                    <a href="">Products</a>
+                    <a href="{{ route('dashboard.products') }}">Products</a>
                     <i class="fas fa-chevron-right"></i>
                     <span>Add Product</span>
                 </div>
@@ -24,11 +24,12 @@
                     Back to Products
                 </a>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Product Form -->
         <div class="form-container">
-            <form class="product-form" id="productForm"  action="{{ route('dashboard.products.store') }}" method="POST" enctype="multipart/form-data">
+            <form class="product-form" id="productForm" action="{{ route('dashboard.products.store') }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 <div class="form-grid">
                     <!-- Basic Information -->
@@ -46,7 +47,7 @@
                         <div class="form-group">
                             <label for="category" class="form-label">Category <span class="required">*</span></label>
                             <select id="category" name="category_id" class="form-control" required>
-                                <option value="">Select Category</option>
+                                <option value="" disabled @readonly(true) selected>Select Category</option>
                                 <option value="1">Drink</option>
                                 <option value="2">Food</option>
                             </select>
